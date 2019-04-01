@@ -12,6 +12,9 @@ public class Main {
         // Declaramos numeroRomano como nuevo objeto.
         NumerosRomanos numeroRomano = new NumerosRomanos(romanNumber);
         
+        numeroRomano.traducirNumeroRomano();
+        
+        System.out.println("El número romano" +" "+numeroRomano.getRomanNumber() +" "+ "es: "+ numeroRomano.getDecimalNumber()+" "+"en decimal");
     }
 
 }

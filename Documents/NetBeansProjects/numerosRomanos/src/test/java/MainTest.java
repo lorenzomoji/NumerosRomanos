@@ -8,6 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.lasencinas.numerosromanos.SimbolosRomanos;
 import static org.assertj.core.api.Assertions.assertThat;
+import org.lasencinas.numerosromanos.NumerosRomanos;
 
 
 public class MainTest {
@@ -19,10 +20,8 @@ public class MainTest {
         SimbolosRomanos numero = SimbolosRomanos.C.X;
         assertThat(numero).isInstanceOf(SimbolosRomanos.class);
         assertThat(numero.ordinal()).isEqualTo(2);
-        assertThat(numero.name()).isEqualToIgnoringWhitespace("X");
         assertThat(SimbolosRomanos.valueOf(numero.name())).isEqualTo(SimbolosRomanos.X);
         assertThat(numero.compareTo(numero.X)).isEqualTo(0);
-        assertThat(numero.toString()).isEqualToIgnoringWhitespace("X");
         assertThat(numero.equals(numero.X)).isEqualTo(true);
         assertThat(SimbolosRomanos.values()[2]).isEqualTo(numero);
     }
@@ -32,5 +31,17 @@ public class MainTest {
         SimbolosRomanos numerosRomanos = SimbolosRomanos.C.X;
         assertThat(numerosRomanos.getNumero()).isEqualTo(10);
     }
-    
+
+    @Test
+    public void NumerosRomanosCM() {
+        SimbolosRomanos numerosRomanos = SimbolosRomanos.C.CM;
+        assertThat(numerosRomanos.getNumero()).isEqualTo(900);
+    }
+
+    @Test
+    public void NumerosRomanosUMMMUCCCU() {
+        String romanNumber = "UMMMUCCCU";
+        NumerosRomanos numeroRomano = new NumerosRomanos(romanNumber);
+        assertThat(numeroRomano.traducirNumeroRomano()).isEqualTo(3300);
+    }
 }

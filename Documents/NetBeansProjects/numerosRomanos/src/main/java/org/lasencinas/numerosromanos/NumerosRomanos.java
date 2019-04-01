@@ -41,5 +41,28 @@ public class NumerosRomanos {
         Matcher matcher = pattern.matcher(number);
         return matcher;
     }
+    
+    public int traducirNumeroRomano() {
+        
+        for (String regularExpression: regex) {
+            Matcher matcher = createMatcher (regularExpression, getRomanNumber());
+            totalDecimal(matcher);
+        }  
+        return getDecimalNumber();
+        
+    }
+    
+    public void totalDecimal(Matcher matcher) {
+        
+        while (matcher.find()) {
+            this.decimalNumber = this.decimalNumber + pasarADecimal(matcher.group());
+        }
 
+    }
+    
+    public int pasarADecimal(String romanNumber) {
+        SimbolosRomanos sr = Enum.valueOf(SimbolosRomanos.class, String.valueOf(romanNumber));
+        return sr.getNumero();
+    }
+    
 }
